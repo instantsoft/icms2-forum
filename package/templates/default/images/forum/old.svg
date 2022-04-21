@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+]>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="24px" height="24px" viewBox="-1.76 -1.75 24 24" enable-background="new -1.76 -1.75 24 24"
+	 xml:space="preserve">
+<defs>
+</defs>
+<g id="XMLID_2_">
+	<g>
+		<path fill="#2980B9" d="M20.2,8.54v9.75c0,1.08-0.89,1.95-1.99,1.95H2.24c-1.1,0-1.99-0.87-1.99-1.95V8.54l3.99,2.54v5.26h11.97
+			v-5.27L20.2,8.54z"/>
+		<polygon fill="#2980B9" points="16.21,11.07 16.21,16.34 4.24,16.34 4.24,11.08 10.22,14.88 		"/>
+		<rect x="5.73" y="8.05" fill="#2196F3" width="8.979" height="0.98"/>
+		<rect x="5.73" y="10" fill="#2196F3" width="5.99" height="0.98"/>
+		<path fill="#FFFFFF" d="M11.721,10.98V10H5.73v0.98H11.721z M14.71,9.03V8.05H5.73v0.98H14.71z M16.21,5.61v5.46l-5.99,3.81
+			l-5.98-3.8V5.61H16.21z"/>
+		<path fill="#78909C" d="M10.22,0.25l9.13,6.25c0.529,0.36,0.85,0.95,0.85,1.59v0.45l-3.99,2.53V5.61H4.24v5.47L0.25,8.54V8.09
+			c0-0.64,0.31-1.23,0.85-1.59L10.22,0.25z"/>
+	</g>
+	<g>
+	</g>
+</g>
+</svg>

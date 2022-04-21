@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+]>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="24px" height="24px" viewBox="-1.963 -2.109 24 24" enable-background="new -1.963 -2.109 24 24"
+	 xml:space="preserve">
+<defs>
+</defs>
+<path fill="#2196F3" d="M15.271,0H1.903C0.855,0,0,0.988,0,2.209v9.374c0,1.221,0.855,2.209,1.903,2.209h13.368
+	c1.057,0,1.91-0.988,1.91-2.209V2.209C17.182,0.988,16.328,0,15.271,0z"/>
+<path fill="#0D47A1" d="M0.52,0.7C0.295,0.97,0.14,1.311,0.062,1.688l8.529,7.147l8.529-7.147C17.043,1.311,16.88,0.97,16.661,0.7
+	l-8.07,6.77L0.52,0.7z"/>
+<path fill="#90CAF9" d="M18.129,6.069H4.769c-1.057,0-1.91,0.988-1.91,2.208v9.375c0,1.221,0.853,2.209,1.91,2.209h13.36
+	c1.058,0,1.912-0.988,1.912-2.209V8.278C20.041,7.057,19.187,6.069,18.129,6.069z"/>
+<path fill="#1E88E5" d="M3.379,6.77C3.161,7.039,2.998,7.381,2.921,7.758l8.529,7.146l8.529-7.146
+	c-0.078-0.377-0.233-0.719-0.451-0.988l-8.078,6.77L3.379,6.77z"/>
+</svg>

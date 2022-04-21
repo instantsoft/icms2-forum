@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+]>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="24px" height="24px" viewBox="-2.023 -2.046 24 24" enable-background="new -2.023 -2.046 24 24"
+	 xml:space="preserve">
+<defs>
+</defs>
+<path fill="#2196F3" d="M18.281,0H1.661C0.744,0,0,0.744,0,1.664v18.282l4.741-4.433h13.541c0.92,0,1.664-0.747,1.664-1.662V1.664
+	C19.945,0.744,19.201,0,18.281,0z"/>
+<path fill="#E3F2FD" d="M12.188,5.541c0,1.222-0.988,2.213-2.215,2.213c-1.226,0-2.218-0.992-2.218-2.213
+	c0-1.226,0.992-2.218,2.218-2.218C11.199,3.323,12.188,4.315,12.188,5.541"/>
+<path fill="#BBDEFB" d="M14.405,11.077c0,0-1.227-2.213-4.433-2.213c-3.205,0-4.432,2.213-4.432,2.213v1.109h8.864V11.077z"/>
+</svg>
