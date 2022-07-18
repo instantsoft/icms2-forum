@@ -97,7 +97,7 @@
                         </li>
 
                         <?php if (!$post['is_online']) { ?>
-                            <strong><?php echo LANG_FORUM_AUTHOR_LOGDATE; ?>:</strong><br /> <?php echo string_date_format($post['user_date_log'], true); ?>
+                            <strong><?php echo LANG_FORUM_AUTHOR_LOGDATE; ?>:</strong><br /> <?php echo string_date_format($post['user']['date_log'], true); ?>
                         <?php } else { ?>
                             <span class="online"><?php echo LANG_ONLINE; ?></span>
                         <?php } ?>
@@ -150,7 +150,7 @@
                         <?php } ?>
 
                         <?php if (!$post['is_online']) { ?>
-                            <strong><?php echo LANG_FORUM_AUTHOR_LOGDATE; ?>:</strong> <?php echo string_date_format($post['user_date_log'], true); ?>
+                            <strong><?php echo LANG_FORUM_AUTHOR_LOGDATE; ?>:</strong> <?php echo string_date_format($post['user']['date_log'], true); ?>
                         <?php } else { ?>
                             <span class="online"><?php echo LANG_ONLINE; ?></span>
                         <?php } ?>
@@ -162,9 +162,9 @@
             <tr>
                 <td colspan="2" class="post-content-cell-mobile<?php if ($post['rating'] < 0) { ?> is_bad<?php } ?>">
                 <?php } ?>
-                <?php if (!empty($post['rating_widget'])) { ?>
+                <?php if (!empty($post['info_bar']['rating']['html'])) { ?>
 
-                    <div class="votes-links"><?php echo $post['rating_widget']; ?></div>
+                    <div class="votes-links"><?php echo $post['info_bar']['rating']['html']; ?></div>
 
                 <?php } ?>
 

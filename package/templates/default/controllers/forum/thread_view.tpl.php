@@ -220,7 +220,12 @@ $html_pagebar = html_pagebar($page, $perpage, $total, href_to('forum', $thread['
 
     <?php } else { ?>
 
-            <div><?php echo!$user->id ? LANG_FORUM_FOR_WRITE_ON_FORUM : LANG_FORUM_NOT_WRITE_ON_THIS_THREAD; ?></div>
+            <div class="alert alert-info m-0">
+                <?php echo LANG_FORUM_NOT_WRITE_ON_THIS_THREAD; ?>
+                <?php if (!$user->is_logged) { ?>
+                <br /><?php echo sprintf(LANG_FORUM_FOR_WRITE_ON_FORUM, href_to('auth', 'login'), href_to('auth', 'register')); ?>
+                <?php } ?>
+            </div>
 
     <?php } ?>
 

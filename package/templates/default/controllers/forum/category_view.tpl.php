@@ -286,6 +286,7 @@ $is_odd = false;
 
         <?php echo $this->renderChild('threads', [
             'user'    => $user,
+            'category' => $category,
             'threads' => $threads,
             'options' => $options,
             'is_can_add_thread' => $is_can_add_thread

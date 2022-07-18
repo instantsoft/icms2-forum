@@ -301,7 +301,7 @@ class actionForumThreadView extends cmsAction {
                 'icon' => 'thumbtack',
                 'href'  => href_to('forum', 'post', ['pin', '{id}']).'?csrf_token='.cmsForm::getCSRFToken(),
                 'handler' => function($post, $num){
-                    return !$post['is_first'] && $num>1 && !$post['is_deleted'] && !$post['is_pinned'] && $this->cat_access->is_moder;
+                    return !$post['is_first'] && !$post['is_deleted'] && !$post['is_pinned'] && $this->cat_access->is_moder;
                 }
             ],
             [
@@ -309,7 +309,7 @@ class actionForumThreadView extends cmsAction {
                 'icon' => 'thumbtack',
                 'href'  => href_to('forum', 'post', ['unpin', '{id}']).'?csrf_token='.cmsForm::getCSRFToken(),
                 'handler' => function($post, $num){
-                    return !$post['is_first'] && $num>1 && !$post['is_deleted'] && $post['is_pinned'] && $this->cat_access->is_moder;
+                    return !$post['is_first'] && !$post['is_deleted'] && $post['is_pinned'] && $this->cat_access->is_moder;
                 }
             ],
             [
