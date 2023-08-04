@@ -26,37 +26,6 @@ if ($is_can_add_thread) {
     ));
 }
 
-if ($user->id) {
-
-    $this->addToolButton(array(
-        'class' => 'my-threads',
-        'icon'  => 'address-book',
-        'title' => LANG_FORUM_MY_THREADS,
-        'href'  => href_to('forum', 'my_threads'),
-    ));
-
-    $this->addToolButton(array(
-        'class' => 'my-posts',
-        'icon'  => 'address-card',
-        'title' => LANG_FORUM_MY_POSTS,
-        'href'  => href_to('forum', 'my_posts'),
-    ));
-
-    $this->addToolButton(array(
-        'class' => 'threads',
-        'icon'  => 'newspaper',
-        'title' => LANG_FORUM_NEW_THREADS,
-        'href'  => href_to('forum', 'latest_threads'),
-    ));
-
-    $this->addToolButton(array(
-        'class' => 'posts',
-        'icon'  => 'file-alt',
-        'title' => LANG_FORUM_LATEST_POSTS,
-        'href'  => href_to('forum', 'latest_posts'),
-    ));
-}
-
 if ($user->is_admin) {
 
     $this->addToolButton(array(

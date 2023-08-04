@@ -17,14 +17,6 @@ $this->addBreadcrumb($parent_post ? LANG_FORUM_ADD_REPLY_POST : LANG_FORUM_ADD_N
     'method'      => 'post',
     'toolbar'     => false,
     'submit'      => array('title' => LANG_SEND),
-    'buttons' => array(
-        array(
-            'title' => LANG_PREVIEW,
-            'name' => 'preview',
-            'onclick' => "icms.forum.previewPost('" . href_to('forum', 'post_preview_ajax') . "');",
-            'attributes' => array('class' => 'button-preview btn-secondary')
-        )
-    ),
     'cancel' => array(
         'show' => true,
         'href' => !empty($parent_post) ? href_to('forum', 'pfind', $parent_post['id']) : href_to('forum', $thread['slug'] . '.html'),

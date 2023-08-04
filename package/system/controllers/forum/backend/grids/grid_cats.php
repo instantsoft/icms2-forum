@@ -2,73 +2,66 @@
 
 function grid_cats($controller, $category) {
 
-    $options = array(
-        'is_auto_init'  => false,
-        'is_sortable'   => false,
-        'is_filter'     => true,
-        'is_pagination' => true,
-        'is_draggable'  => false,
-        'is_selectable' => false,
-        'show_id'       => true,
-        'order_by'      => 'ordering',
-        'order_to'      => 'asc',
-    );
+    $options = [
+        'is_sortable' => false,
+        'order_by'    => 'ns_left'
+    ];
 
-    $columns = array(
-        'id' => array(
+    $columns        = [
+        'id'    => [
             'title'  => 'id',
             'width'  => 30,
             'filter' => 'like'
-        ),
-        'title' => array(
-            'title'  => LANG_TITLE,
-            'href'   => href_to($controller->root_url, 'category_edit', ['{id}']),
-            'filter' => 'like',
-            'handler' => function ($v, $row) use($category){
-                return str_repeat('-- ', ($row['ns_level']-$category['ns_level']-1)) . $v;
+        ],
+        'title' => [
+            'title'   => LANG_TITLE,
+            'href'    => $controller->cms_template->href_to('category_edit', ['{id}']),
+            'filter'  => 'like',
+            'handler' => function ($v, $row) use ($category) {
+                return str_repeat('-- ', max(0, ($row['ns_level'] - $category['ns_level']) - 1)) . $v;
             }
-        ),
-        'threads_count' => array(
+        ],
+        'threads_count' => [
             'title'  => LANG_FORUM_THREADS,
             'width'  => 80,
             'filter' => 'like'
-        ),
-        'posts_count' => array(
+        ],
+        'posts_count'   => [
             'title'  => LANG_FORUM_POSTS,
             'width'  => 80,
             'filter' => 'like'
-        ),
-        'is_pub' => array(
+        ],
+        'is_pub'        => [
             'title'       => LANG_ON,
             'width'       => 40,
             'flag'        => true,
-            'flag_toggle' => href_to($controller->root_url, 'toggle_item', array('{id}', 'forum_cats', 'is_pub'))
-        ),
-    );
+            'flag_toggle' => href_to($controller->root_url, 'toggle_item', ['{id}', 'forum_cats', 'is_pub'])
+        ],
+    ];
 
-    $actions = array(
-        array(
+    $actions = [
+        [
             'title' => LANG_VIEW,
             'class' => 'view',
             'href'  => href_to('forum', '{slug}')
-        ),
-        array(
+        ],
+        [
             'title' => LANG_FORUM_CAT_EDIT,
             'class' => 'edit',
             'href'  => href_to($controller->root_url, 'category_edit', ['{id}'])
-        ),
-        array(
+        ],
+        [
             'title'   => LANG_CP_FORUM_CAT_DELETE,
             'class'   => 'delete',
             'href'    => href_to($controller->root_url, 'category_delete', ['{id}']),
             'confirm' => LANG_CP_FORUM_CAT_DELETE_CONFIRM
-        )
-    );
+        ]
+    ];
 
-    return array(
+    return [
         'options' => $options,
         'columns' => $columns,
         'actions' => $actions
-    );
+    ];
 
 }

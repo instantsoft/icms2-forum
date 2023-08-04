@@ -1,0 +1,12 @@
+[subject:Invitation to a topic on the forum - {site}]
+
+Hello, {nickname}.
+
+You are invited to become a participant in the topic: "<a href="{page_url}">{page_title}</a>".
+
+You can discuss the topic by clicking on the link:
+<a href="{page_url}">{page_title}</a>
+
+--
+Sincerely, {site}
+ <small>The email was sent automatically, please do not reply to it.</small>

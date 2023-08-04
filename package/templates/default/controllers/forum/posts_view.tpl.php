@@ -24,6 +24,14 @@
                         <a class="post-finder" href="<?php echo href_to('forum ', 'pfind', array($post['id'])); ?>" rel="nofollow">#<?php echo $post_num; ?></a>
                     </strong> - <?php echo string_date_format($post['date_pub'], true); ?>
 
+                    <?php if (!empty($post['title'])) { ?>
+                        <span>
+                            <a class="" href="<?php echo href_to('forum', 'pfind', $post['id']); ?>" rel="nofollow">
+                                <?php html($post['title']); ?>
+                            </a>
+                        </span>
+                    <?php } ?>
+
                 </div>
 
                 <?php if (empty($thread['is_closed'])) { ?>
@@ -96,7 +104,7 @@
                             <b><?php echo LANG_FORUM_MESSAGES; ?>:</b> <?php echo $post['user']['forum_posts_count']; ?>
                         </li>
 
-                        <?php if (!$post['is_online']) { ?>
+                        <?php if (!$post['is_online'] && !empty($post['user']['date_log'])) { ?>
                             <strong><?php echo LANG_FORUM_AUTHOR_LOGDATE; ?>:</strong><br /> <?php echo string_date_format($post['user']['date_log'], true); ?>
                         <?php } else { ?>
                             <span class="online"><?php echo LANG_ONLINE; ?></span>
@@ -149,7 +157,7 @@
 
                         <?php } ?>
 
-                        <?php if (!$post['is_online']) { ?>
+                        <?php if (!$post['is_online'] && !empty($post['user']['date_log'])) { ?>
                             <strong><?php echo LANG_FORUM_AUTHOR_LOGDATE; ?>:</strong> <?php echo string_date_format($post['user']['date_log'], true); ?>
                         <?php } else { ?>
                             <span class="online"><?php echo LANG_ONLINE; ?></span>
@@ -176,7 +184,7 @@
 
                     <?php } else { ?>
 
-                        <a onclick="icms.forum.viewPost( '<?php echo href_to('forum', 'post_view_ajax', $post['id']); ?>', <?php echo $post['id']; ?> ); return false;" href="#" class="ajaxlink" title="<?php echo LANG_FORUM_VIEW; ?>"><?php echo LANG_FORUM_VIEW; ?></a>
+                        <a onclick="return icms.forum.viewPost('<?php echo href_to('forum', 'post_view_ajax', $post['id']); ?>', <?php echo $post['id']; ?>);" href="#" class="ajaxlink" title="<?php echo LANG_FORUM_VIEW; ?>"><?php echo LANG_FORUM_VIEW; ?></a>
 
                     <?php } ?>
 

@@ -20,12 +20,6 @@ $this->addToolButton(array(
     'href'  => $this->href_to('')
 ));
 
-?>
-
-<h1><?php echo $page_title ?></h1>
-
-<?php
-
 $this->renderForm($form, $category, array(
     'action' => '',
     'method' => 'post'

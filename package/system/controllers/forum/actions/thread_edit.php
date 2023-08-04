@@ -55,6 +55,9 @@ class actionForumThreadEdit extends cmsAction {
             }
         }
 
+        // Обработка формы событиями
+        list($form, $thread) = cmsEventsManager::hook("forum_thread_form", [$form, $thread]);
+
         // Запоминаем старые данные
         $thread_old = $thread;
 

@@ -36,8 +36,11 @@ class actionForumThreadAdd extends cmsAction {
             return cmsCore::error404();
         }
 
+        $thread = [];
+
         // Форма создания темы
         $form = $this->getForm('thread', ['add', $this->cat_access->is_moder]);
+
         // Добавляем поля первого поста
         $post_fields = $this->getPostFormFields([
             'is_attach' => $this->thread_access->is_can_attach
@@ -45,6 +48,7 @@ class actionForumThreadAdd extends cmsAction {
         foreach ($post_fields as $post_field) {
             $form->addField('basic', $post_field);
         }
+
         // Добавляем голосование, если разрешено
         if($this->thread_access->is_can_poll_add){
 
@@ -54,6 +58,9 @@ class actionForumThreadAdd extends cmsAction {
                 $form->addFieldset('', $fid, $poll_fieldset);
             }
         }
+
+        // Обработка формы событиями
+        list($form, $thread) = cmsEventsManager::hook("forum_thread_form", [$form, $thread]);
 
         // Если форма отправлена
         if ($this->request->has('submit')) {
@@ -132,7 +139,7 @@ class actionForumThreadAdd extends cmsAction {
             'do'        => 'add',
             'page_title' => LANG_FORUM_NEW_THREAD,
             'form'     => $form,
-            'thread'   => isset($thread) ? $thread : [],
+            'thread'   => $thread,
             'category' => $category,
             'errors'   => isset($errors) ? $errors : false
         ]);
