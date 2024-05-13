@@ -14,7 +14,7 @@
                         <?php html($cat['title']); ?>
                     </a>
                 </div>
-                <div class="col-sm-3 d-none d-md-block">Активность</div>
+                <div class="col-sm-3 d-none d-md-block"><?php echo LANG_FORUM_ACTIVITY; ?></div>
                 <div class="col-sm-3 d-none d-md-block"><?php echo LANG_FORUM_LAST_POST; ?></div>
             </div>
 

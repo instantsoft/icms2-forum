@@ -84,6 +84,7 @@ define('LANG_CP_DEL_PTHR', 'Deleted topics');
 define('LANG_FORUM_CATS', 'Sections');
 define('LANG_FORUM_POSTS', 'Messages');
 define('LANG_FORUM_STATS', 'Statistics');
+define('LANG_FORUM_ACTIVITY', 'Activity');
 define('LANG_FORUM_LAST_POST', 'Last message');
 define('LANG_FORUM_THREAD_POST', 'subject message');
 define('LANG_FORUM_SUBFORUMS', 'Subsections:');

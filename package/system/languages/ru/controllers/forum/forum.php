@@ -81,6 +81,7 @@ define('LANG_CP_DEL_PTHR', 'Удалено тем');
 define('LANG_FORUM_CATS', 'Разделы');
 define('LANG_FORUM_POSTS', 'Сообщения');
 define('LANG_FORUM_STATS', 'Статистика');
+define('LANG_FORUM_ACTIVITY', 'Активность');
 define('LANG_FORUM_LAST_POST', 'Последнее сообщение');
 define('LANG_FORUM_THREAD_POST', 'сообщение в теме');
 define('LANG_FORUM_SUBFORUMS', 'Подразделы:');
