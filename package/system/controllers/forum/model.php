@@ -2,6 +2,8 @@
 
 class modelForum extends cmsModel {
 
+    use icms\traits\controllers\models\transactable;
+
     public $table_prefix = '';
 
     /**
