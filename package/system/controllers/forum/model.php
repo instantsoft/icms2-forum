@@ -987,6 +987,10 @@ class modelForum extends cmsModel {
             $post = $this->getThreadLastPost($thread['id']);
         }
 
+        if (!$post){
+            return false;
+        }
+
         $posts_count = $this->getThreadPostsCount($thread['id']);
 
         $cache->clean('forum.threads');
@@ -1336,10 +1340,8 @@ class modelForum extends cmsModel {
         $config = cmsConfig::getInstance();
 
         // Удаляем прикрепленные файлы
-        if (!empty($post['files'])){
-            foreach ($post['files'] as $value) {
-                $files_model->deleteFile($value['id']);
-            }
+        if (!empty($post['files']['id'])){
+            $files_model->deleteFile($post['files']['id']);
         }
 
         // Ищем и удаляем картинки в тексте сообщения

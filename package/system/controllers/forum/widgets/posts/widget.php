@@ -134,6 +134,10 @@ class widgetForumPosts extends cmsWidget {
         $rating_max = $this->getOption('rating_max', '');
         $sorting    = $this->getOption('sorting', 'date_pub:desc');
 
+        if (empty($sorting)){
+            $sorting = 'date_pub:desc';
+        }
+
         // Есть категории для фильтрации
         if($this->filtered_cats){
             $this->forum->model->filterIn('i.category_id', $this->filtered_cats);

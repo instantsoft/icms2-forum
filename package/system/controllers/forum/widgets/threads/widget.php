@@ -10,8 +10,13 @@ class widgetForumThreads extends cmsWidget {
     public function run() {
 
         $category_id = $this->getOption('category_id');
+        $sorting     = $this->getOption('sorting', 'date_pub:desc');
 
-        list($order_field, $order_direction) = explode(':', $this->getOption('sorting', 'date_pub:desc'));
+        if (empty($sorting)){
+            $sorting = 'date_pub:desc';
+        }
+
+        list($order_field, $order_direction) = explode(':', $sorting);
 
         $forum = cmsCore::getController('forum');
 
