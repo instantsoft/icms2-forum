@@ -50,7 +50,7 @@ class actionForumThreadView extends cmsAction {
 
         // добавляем Last-Modified
         if(!$this->cms_user->is_logged){
-            cmsCore::respondIfModifiedSince($thread['date_last_modified']);
+            $this->cms_core->response->setLastModified($thread['date_last_modified']);
         }
 
         // Загружаем доступы для темы

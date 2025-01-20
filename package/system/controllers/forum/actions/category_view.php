@@ -32,7 +32,7 @@ class actionForumCategoryView extends cmsAction {
 
         // добавляем Last-Modified
         if(!$this->cms_user->is_logged){
-            cmsCore::respondIfModifiedSince($category['date_last_modified']);
+            $this->cms_core->response->setLastModified($category['date_last_modified']);
         }
 
         // Получаем список разделов отсортированных по уровням вложенности
