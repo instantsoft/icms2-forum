@@ -32,6 +32,7 @@ class actionForumPostAdd extends cmsAction {
         if (!$category || !empty($category['as_folder'])) {
             return cmsCore::error404();
         }
+
         if (!$this->cms_user->is_admin && !$category['is_pub']) {
             return cmsCore::error404();
         }
@@ -101,7 +102,7 @@ class actionForumPostAdd extends cmsAction {
                 'text'                => $post['content'],
                 'is_auto_br'          => empty($this->options['editor']) || $this->options['editor'] === 'markitup',
                 'build_smiles'        => $this->options['editor'] === 'markitup', // пока что только так
-                'build_redirect_link' => $this->options['build_redirect_link']
+                'build_redirect_link' => empty($this->options['build_redirect_link']) ? true : false
             ]) : $post['content'];
 
             if(!$content_html){

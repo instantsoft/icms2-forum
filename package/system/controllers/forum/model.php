@@ -1446,14 +1446,6 @@ class modelForum extends cmsModel {
      */
     public function deleteController($id) {
 
-        // удаляем таблицы компонента
-        $this->db->dropTable('forum_cats');
-        $this->db->dropTable('forum_polls');
-        $this->db->dropTable('forum_poll_votes');
-        $this->db->dropTable('forum_posts');
-        $this->db->dropTable('forum_threads');
-        $this->db->dropTable('forum_threads_hits');
-
         // удаляем записи из ленты активности
         $activity_types = $this->filterEqual('controller', 'forum')->get('activity_types');
 
@@ -1465,39 +1457,103 @@ class modelForum extends cmsModel {
 
         $this->filterEqual('controller', 'forum')->deleteFiltered('activity_types');
 
-        // удаляем страницы виджетов форума
-        $this->filterEqual('controller', 'forum')->deleteFiltered('widgets_pages');
-
         // удаляем виджеты
-        $this->filterEqual('controller', 'forum')->deleteFiltered('widgets');
+        $widgets = $this->filterEqual('controller', 'forum')->get('widgets');
 
-        // удаляем правила доступов
-        $rules = $this->filterEqual('controller', 'forum')->get('perms_rules');
-        if ($rules){
-            foreach ($rules as $rule) {
-                $this->filterEqual('rule_id', $rule['id'])->deleteFiltered('perms_users');
+        if ($widgets) {
+
+            foreach ($widgets as $widget){
+                $this->filterEqual('widget_id', $widget['id'])->deleteFiltered('widgets_bind');
             }
-            $this->filterEqual('controller', 'forum')->deleteFiltered('perms_rules');
+
+            $this->filterEqual('controller', 'forum')->deleteFiltered('widgets');
+
         }
 
-        // удаляем задания планировщика
-        $this->filterEqual('controller', 'forum')->deleteFiltered('scheduler_tasks');
+        // удаляем страницы виджетов форума
+        $widgets_pages = $this->filterEqual('controller', 'forum')->get('widgets_pages');
+
+        if ($widgets_pages) {
+
+            foreach ($widgets_pages as $page){
+                $this->filterEqual('page_id', $page['id'])->deleteFiltered('widgets_bind_pages');
+            }
+
+            $this->filterEqual('controller', 'forum')->deleteFiltered('widgets_pages');
+
+        }
 
         // удаляем настройки из компонента rss
         $this->filterEqual('ctype_name', 'forum')->deleteFiltered('rss_feeds');
 
-        // удаляем вкладку профиля пользователя
-        $this->filterEqual('name', 'forum')->deleteFiltered('{users}_tabs');
-
         // удаляем поле подписи на форуме
-        $this->filterEqual('name', 'forum_sign')->deleteFiltered('{users}_fields');
+        if ($this->db->isFieldExists("{users}_fields", 'forum_sign')) {
+            $this->filterEqual('name', 'forum_sign')->deleteFiltered('{users}_fields');
+        }
 
         // удаляем колонки форума из таблицы cms_users
-        $this->db->dropTableField('users', 'forum_sign');
-        $this->db->dropTableField('users', 'forum_posts_count');
+        if ($this->db->isFieldExists('{users}', 'forum_sign')) {
+            $this->db->dropTableField('{users}', 'forum_sign');
+            $this->db->dropTableField('{users}', 'forum_posts_count');
+        }
 
-        // удаление запись из cms_controllers
-        return parent::deleteController($id);
+        // вкладка профиля пользователя, события,
+        // задания планировщика, правила доступов
+        // запись из cms_controllers удалятся в родителе
+        $success = parent::deleteController('forum');
+
+        // оставляем файлы и таблицы компонента,
+        // если в процессе удаления возникли ошибки
+        if ($success !== true) {
+            return false;
+        }
+
+        // удаляем таблицы компонента
+        $this->db->dropTable('forum_cats');
+        $this->db->dropTable('forum_polls');
+        $this->db->dropTable('forum_poll_votes');
+        $this->db->dropTable('forum_posts');
+        $this->db->dropTable('forum_threads');
+        $this->db->dropTable('forum_threads_hits');
+
+        // удаляем файлы и папки, если это возможно
+        $root_path = cmsConfig::get('root_path');
+
+        $dirs_or_files = [
+            'system/controllers/forum',
+            'system/languages/en/controllers/forum',
+            'system/languages/ru/controllers/forum',
+            'templates/default/controllers/forum',
+            'templates/default/images/forum',
+            'templates/modern/controllers/forum',
+            'templates/modern/scss/controllers/forum',
+            'system/controllers/search/hooks/forum_before_item.php',
+            'system/controllers/subscriptions/hooks/forum_after_add_post.php',
+            'system/languages/en/letters/forum_new.txt',
+            'system/languages/en/letters/forum_invite_thread.txt',
+            'system/languages/ru/letters/forum_new.txt',
+            'system/languages/ru/letters/forum_invite_thread.txt',
+            'templates/default/controllers/rss/forum.tpl.php',
+            'templates/default/js/forum.js',
+            'templates/modern/js/forum.js'
+        ];
+
+        foreach ($dirs_or_files as $dir_or_file) {
+
+            $dir_or_file = $root_path . $dir_or_file;
+
+            if (is_dir($dir_or_file)){
+                files_remove_directory($dir_or_file);
+                continue;
+            }
+
+            if (is_file($dir_or_file)){
+                @unlink($dir_or_file);
+            }
+
+        }
+
+        return true;
     }
 
 //============================================================================//
