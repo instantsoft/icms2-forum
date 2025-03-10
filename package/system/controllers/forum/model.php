@@ -1337,7 +1337,6 @@ class modelForum extends cmsModel {
     public function deletePostAttaches($post){
 
         $files_model = cmsCore::getModel('files');
-        $config = cmsConfig::getInstance();
 
         // Удаляем прикрепленные файлы
         if (!empty($post['files']['id'])){
