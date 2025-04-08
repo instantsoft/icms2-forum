@@ -48,7 +48,7 @@ class formForumThread extends cmsForm {
                         $model = cmsCore::getModel('forum');
 
                         if (!$user->is_admin){
-                            $model->filterEqual('c.is_pub', 1);
+                            $model->filterEqual('is_pub', 1);
                         }
 
                         $cats = $model->getCategoriesTree('forum', false);
@@ -57,8 +57,9 @@ class formForumThread extends cmsForm {
                             foreach ($cats as $cat) {
 
                                 $cat['moderators'] = cmsModel::yamlToArray($cat['moderators']);
+                                $cat['groups_edit'] = cmsModel::yamlToArray($cat['groups_edit']);
 
-                                if (!$user->isInGroups($cat['moderators']) && !$user->is_admin) {
+                                if (!$user->is_admin && !in_array($user->id, $cat['moderators']) && !$user->isInGroups($cat['groups_edit'])) {
                                     continue;
                                 }
 
